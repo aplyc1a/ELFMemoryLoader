@@ -20,12 +20,14 @@ After that，you may want to modify IP 、port、auth-password even package size
 
 In fact, the client run the target elf in the following steps:
 
+```text
 step 1. Pass the authentication.
 step 2. Request the stage1 packet.
 step 3. Request the stage2 packets（elf data）.
 step 4. Create anonymous file in memory.
 step 5. Fill the anonymous file content with the remote elf data.
 step 6. run the anonymous file with the file descriptor.
+```
 
 
 
@@ -35,12 +37,14 @@ step 6. run the anonymous file with the file descriptor.
 
 实际上，客户端内存加载elf的思想如下：
 
+```text
 step 1. 通过服务器的认证。
 step 2. 从服务器上请求stage1的数据。该数据其实描述的是elf的大小。
 step 3. 从服务器上请求stage2的数据，这部分数据其实就是elf数据。
 step 4. 在内存中运行匿名文件。
 step 5. 填充匿名文件，把得到的elf数据填进来。
 step 6. 通过匿名文件的句柄把文件从内存中跑起来。
+```
 
 
 
